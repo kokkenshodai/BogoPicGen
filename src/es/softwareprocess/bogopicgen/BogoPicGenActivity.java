@@ -128,7 +128,11 @@ public class BogoPicGenActivity extends Activity {
     			}
     			File intentPicture = getPicturePath(intent);
     			saveBMP(intentPicture, ourBMP);
-    			setResult(RESULT_OK);
+    			
+    			intent.putExtra(Intent.EXTRA_STREAM, ourBMP);
+    			intent.setType("data");
+    			
+    			setResult(RESULT_OK,intent);
     		} else {
     			Toast.makeText(this, "Photo Cancelled: No Reciever?", Toast.LENGTH_LONG).show();
     			setResult(RESULT_CANCELED);
